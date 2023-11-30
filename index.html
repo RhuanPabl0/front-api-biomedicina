@@ -1,57 +1,44 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exibir Procedimentos</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+    <script src="js/main.js" defer></script>
+    <title>Login</title>
 </head>
 <body>
+  <div class="main-login">
+      <div class="left-login">
+        <h1>Fasiclin - CPA</h1>
+          <img src="assets/medicine-animate.svg" class="left-login-image" alt="Animação">
+      </div>
+      <div class="right-login">
+          <div class="card-login">
+              <h1>Login </h1>
+              <div class="textfield">
+                  <label for="codprof">Codigo do Profissional:</label>
+                  <input type="text" name="codprof" id="codprof" placeholder="" required>
+              </div>
+            
+              <div class="textfield">
+                  <label for="senha">Senha:</label>
+                  <input type="password" name="senha" placeholder="" required>
+              </div>
 
-<div id="procedimentos-container"></div>
-
-<script>
-const url = 'http://localhost:8080/procedimentos';
-
-async function getProcedimentos() {
-    try {
-        const response = await fetch(url);
-
-        if (!response.ok) {
-            throw new Error(`Erro ao obter dados da API. Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        // Chama a função para exibir procedimentos na página
-        displayProcedimentos(data);
-    } catch (error) {
-        console.error('Erro ao obter dados da API:', error.message);
-    }
-}
-
-function displayProcedimentos(procedimentos) {
-    const procedimentosContainer = document.getElementById('procedimentos-container');
-
-    // Limpa o conteúdo anterior
-    procedimentosContainer.innerHTML = '';
-
-    // Cria elementos HTML para cada procedimento
-    procedimentos.forEach(procedimento => {
-        const procedimentoElement = document.createElement('div');
-        procedimentoElement.innerHTML = `
-            <p>ID: ${procedimento.id}</p>
-            <p>Código: ${procedimento.codProced}</p>
-            <p>Descrição: ${procedimento.descProced}</p>
-            <p>Valor: ${procedimento.valProced}</p>
-            <hr>
-        `;
-        procedimentosContainer.appendChild(procedimentoElement);
-    });
-}
-
-// Chama a função para obter procedimentos ao carregar a página
-getProcedimentos();
-</script>
-
+              <div class="lembrar-me">
+                  <input type="checkbox" id="lembrar-me" name="lembrar-me">
+                  <label for="lembrar-me">Lembrar-me</label>
+              </div>
+              <div class="esqueceu-senha">
+                  <a href="#">Esqueceu a senha?</a>
+              </div>
+              <button class="btn-login">Login</button>
+          </div>
+      </div>
+  </div>
 </body>
 </html>

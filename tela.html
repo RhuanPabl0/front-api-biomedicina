@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <title>Realizar Procedimentos</title>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Realizar Procedimento</h1>
+
+    <div class="card">
+      <div class="card-header">
+        Dados do Profissional
+      </div>
+      <div class="card-body">
+        <p><strong>Nome:</strong> Dr. João da Silva</p>
+        <p><strong>Especialidade:</strong> Biomedicina</p>
+        <p><strong>CRM:</strong> 123</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        Agendamentos para Hoje
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Paciente - Renan - 09:00</li>
+          <li>Paciente - Nathan - 10:30</li>
+          <li>Paciente - Rhuan - 14:00</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="card">
+        <div class="card-header">
+          Consultar Horários Disponíveis
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="profissional">Selecione o Profissional:</label>
+              <select id="profissional" name="profissional">
+                <option value="1">Dr. João da Silva</option>
+               
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="data">Selecione a Data:</label>
+              <input type="date" id="data" name="data">
+            </div>
+            <div class="form-group">
+              <button type="button" onclick="consultarHorarios()">Consultar Horários</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button onclick="realizarConsulta()">Realizar Consulta</button>
+    </div>
+
+  </div>
+</body>
+</html>
