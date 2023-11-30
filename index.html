@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir Procedimentos</title>
+</head>
+<body>
+
+<div id="procedimentos-container"></div>
+
+<script>
+const url = 'http://localhost:8080/procedimentos';
+
+async function getProcedimentos() {
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`Erro ao obter dados da API. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Chama a função para exibir procedimentos na página
+        displayProcedimentos(data);
+    } catch (error) {
+        console.error('Erro ao obter dados da API:', error.message);
+    }
+}
+
+function displayProcedimentos(procedimentos) {
+    const procedimentosContainer = document.getElementById('procedimentos-container');
+
+    // Limpa o conteúdo anterior
+    procedimentosContainer.innerHTML = '';
+
+    // Cria elementos HTML para cada procedimento
+    procedimentos.forEach(procedimento => {
+        const procedimentoElement = document.createElement('div');
+        procedimentoElement.innerHTML = `
+            <p>ID: ${procedimento.id}</p>
+            <p>Código: ${procedimento.codProced}</p>
+            <p>Descrição: ${procedimento.descProced}</p>
+            <p>Valor: ${procedimento.valProced}</p>
+            <hr>
+        `;
+        procedimentosContainer.appendChild(procedimentoElement);
+    });
+}
+
+// Chama a função para obter procedimentos ao carregar a página
+getProcedimentos();
+</script>
+
+</body>
+</html>
